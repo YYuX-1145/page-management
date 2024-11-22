@@ -34,13 +34,11 @@ class Clock():
 if __name__=="__main__":
     os.system("cls")
     clock=Clock(int(input("enter size:")))
-    #SEQ=[1,2,3,5,6,8,3,7,9,6,12,3,6,5,4,10,11]:
-    #SEQ=[1,5,2,5,1,4,1,5,3]:
-    SEQ=[7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1]
+    SEQ=[1,2,3,5,6,8,3,7,9,6,12,3,6,5,4,10,11]
+    #SEQ=[1,5,2,5,1,4,1,5,3]
+    #SEQ=[7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1]
     for x in SEQ:
         print(f"-->{x}")
         clock.Action(str(x))
     while(True):
         clock.Action(input("ENTER PAGE : "))
-    
-    
