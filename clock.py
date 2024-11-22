@@ -10,23 +10,22 @@ class Clock():
         self.ptr=self.ptr+1 if self.ptr<self.size-1 else 0
     def show(self):
         for i in range(self.size):
-            if self.lst[i] is None:
-                break
-            print((self.lst[i],self.lstR[i]))
+            # if self.lst[i] is None:
+            #     break
+            print((self.lst[i],self.lstR[i]),"<--"if self.ptr==i else "")
+        print()
     def Action(self,page):
-      while(True):
-        if self.lst[self.ptr]==page:
-            self.lstR[self.ptr]=1
-            #self.next() #this line is not correct.
+        if page in self.lst:#does not move if page exists
+            self.lstR[self.lst.index(page)]=1
             self.show()
-            return True
-        else:
-            if self.lstR[self.ptr]<=0:
-                self.lst[self.ptr]=page  
+            return True 
+        while(True):               
+            if self.lstR[self.ptr]<=0:   #substitution
+                self.lst[self.ptr]=page
                 self.lstR[self.ptr]=1
-                self.show()
                 self.next()
                 self.num_sub+=1
+                self.show()
                 return True
             else: 
                 self.lstR[self.ptr]=0   
@@ -35,10 +34,13 @@ class Clock():
 if __name__=="__main__":
     os.system("cls")
     clock=Clock(int(input("enter size:")))
-    #while(True):
-        #clock.Action(input("ENTER PAGE : "))
-    #for x in [1,2,3,5,6,8,3,7,9,6,12,3,6,5,4,10,11]:
-    for x in [1,5,2,5,1,4,1,5,3]:
-    #for x in [7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1]:
+    #SEQ=[1,2,3,5,6,8,3,7,9,6,12,3,6,5,4,10,11]:
+    #SEQ=[1,5,2,5,1,4,1,5,3]:
+    SEQ=[7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1]
+    for x in SEQ:
         print(f"-->{x}")
         clock.Action(str(x))
+    while(True):
+        clock.Action(input("ENTER PAGE : "))
+    
+    
